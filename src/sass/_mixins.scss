@@ -1,0 +1,107 @@
+/* Mixins.scss */
+@import "colorTheme";
+@import "fonts";
+@import "variables";
+
+/* flex */
+@mixin flex-center($wrap: wrap) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: $wrap;
+    gap: $margin-default;
+}
+
+
+@mixin cta-button-default {
+    display: inline-block;
+    background-color: $main-theme-color;
+    border: inset 1px solid $main-font-color;
+    border-radius: $default-border-radius;
+    min-width: 125px;
+    padding: $padding-cta-button-default;
+    font-family: $main-font-family;
+    font-style: italic;
+    font-size: 1.8rem;
+    color: $main-font-color-disabled;
+    transition: color 0.2s ease-in-out,
+        background-color 0.2s ease-in-out;
+
+    &:hover {
+        color: $main-font-color;
+        background-color: $tiers-theme-color;
+    }
+}
+
+@mixin section-container($display: flex, $flex-direction: row, $flex-wrap: nowrap,
+    $align-items: center, $justify-content: center, $gap: 1.6rem, $width: 100%, $height: auto, $margin: 0, $padding: 5.2rem, $backgroundColor: $second-theme-color, $border-radius: $default-border-radius) {
+
+    display: $display;
+    flex-direction: $flex-direction;
+    flex-wrap: $flex-wrap;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    gap: $gap;
+    width: $width;
+    height: $height;
+    margin: $margin;
+    padding: $padding;
+    background-color: $backgroundColor;
+    border-radius: $border-radius;
+    transition: $backgroundColor 0.2s ease-in-out;
+
+    &:hover {
+        background-color: darken($backgroundColor, 10%);
+    }
+
+    .section-illustration-article {
+        @include responsive-image(250px);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        width: 100%;
+    }
+
+    .date {
+        display: flex;
+        align-items: center;
+        gap: $gap-default;
+        font-style: italic;
+
+        .icon {
+            @include responsive-image(22px);
+        }
+    }
+
+    .article-title {
+        display: flex;
+        gap: $gap-default;
+
+    }
+
+    // .article-content{
+    //     p{
+
+    //     }
+    // }
+
+    button{
+        align-self: baseline;
+    }
+
+
+}
+
+
+/* Images */
+@mixin responsive-image($width: 100%, $height: auto, $object-fit: cover, $object-position: center) {
+    display: block;
+    width: $width;
+    max-width: 100%;
+    height: $height;
+    object-fit: $object-fit;
+    object-position: $object-position;
+}

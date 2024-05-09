@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import iconDate from "./assets/icons/clock.svg";
+import imgArticleHighlight from "./assets/images/imgArticle.png";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="testFont">
+        <h1>Test fonts</h1>
+        <h2>Test</h2>
+        <h3>Test</h3>
+        <h4>Test</h4>
+        <h5>Test</h5>
+        <p>Test</p>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+      <div className="testComponent">
+        <h2>Test Components</h2>
+        <button className="cta-button">Hover me</button>
+      </div>
+
+      <div id="mainContainer">
+        <h2>Sections</h2>
+        <section className="section-highLight">
+          <img
+            src={imgArticleHighlight}
+            alt={`illustration de l'article, nom de la photo :${imgArticleHighlight} `}
+            className="section-illustration-article"
+          />
+          <h2 className="date">
+            <img src={iconDate} alt="icône date" className="icon" /> le 09 mai 2024
+          </h2>
+
+          <h3 className="article-title">Article Title</h3>
+          <div className="article-content">
+          <p>
+            Test Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+            soluta earum rem corrupti accusantium. Porro rerum natus cumque illo
+            expedita repellendus laudantium asperiores qui, labore ad,
+            voluptates laborum dolor voluptatem assumenda nam voluptatibus
+            dolorum ipsum quia odio eaque non? Amet dicta et dolore repellat
+            accusamus fugiat officia nihil sint voluptas.
+          </p>
+          </div>
+          <button className="cta-button">Hover me</button>
+        </section>
+        <section className="section-usual">
+          <h2>
+            <img src={iconDate} alt="icône date" /> Date
+          </h2>
+          <h3>Title</h3>
+          <p>
+            Test Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+            soluta earum rem corrupti accusantium. Porro rerum natus cumque illo
+            expedita repellendus laudantium asperiores qui, labore ad,
+            voluptates laborum dolor voluptatem assumenda nam voluptatibus
+            dolorum ipsum quia odio eaque non? Amet dicta et dolore repellat
+            accusamus fugiat officia nihil sint voluptas.
+          </p>
+        </section>
+      </div>
+    </>
+  );
+}

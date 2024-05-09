@@ -1,0 +1,70 @@
+/* reset.scss */
+@import "colorTheme";
+@import "fonts";
+@import "variables";
+@import "mixins";
+
+
+*,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    font-size: $font-base;
+    line-height: $line-height-base;
+    color: $main-font-color;
+    font-family: $main-font-family;
+}
+
+body {
+    font-size: $paragraph;
+    background-color: $main-theme-color;
+    min-width: $min-width;
+    max-width: $max-width;
+    height: $max-height;
+    padding: 1rem;
+
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        text-wrap: pretty;
+        font-weight: bolder;
+    }
+
+    #mainContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: $gap-default;
+    }
+}
+
+
+section.section-usual {
+    @include section-container($flex-direction: column);
+}
+
+section.section-highLight {
+    @include section-container($flex-direction: column, $backgroundColor: $tiers-theme-color)
+}
+
+button {
+    @include cta-button-default();
+}
+
+img,
+video,
+svg {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
