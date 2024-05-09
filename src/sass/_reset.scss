@@ -26,25 +26,78 @@ body {
     background-color: $main-theme-color;
     min-width: $min-width;
     max-width: $max-width;
-    height: $max-height;
-    padding: 1rem;
+    min-height: $min-height;
+    margin: auto;
 
-
+    /* texts */
     h1,
     h2,
     h3,
     h4,
     h5 {
         text-wrap: pretty;
-        font-weight: bolder;
+    }
+
+    /* List */
+    li {
+        list-style: none;
+    }
+
+    /* Links */
+    /* Links */
+    a {
+        padding: $padding-default;
+        border-radius: 0.5rem;
+        color: $main-font-color;
+        font-size: 1.8rem;
+        text-decoration: none;
+        background-color: transparent;
+        filter: drop-shadow(5px 5px 4px $tiers-theme-color);
+        transition: filter 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    }
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $gap-default;
+        padding: $padding-default;
+        margin: 0 0 $margin-default;
+        height: 10vh;
+        background-color: $second-theme-color;
+        border-radius: 0 0 1rem 1rem;
+
+        h1.header-title {
+            flex-basis: 100%;
+            font-weight: normal;
+        }
+
+        nav#navBar {
+            @include flex-center($gap: 0);
+            width: 100%;
+            background-color: $main-theme-color;
+            border-radius: 1rem;
+
+            ul {
+                @include flex-center($gap: 0);
+                width: 100%;
+
+                li {
+                    margin-left: $margin-default;
+
+                    a {
+                        &:hover {
+                            filter: drop-shadow(5px 5px 4px $tiers-theme-color);
+                            background-color: $tiers-theme-color;
+                        }
+
+                    }
+                }
+            }
+        }
     }
 
     #mainContainer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: $gap-default;
+        @include flex-center;
     }
 }
 
