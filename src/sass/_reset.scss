@@ -10,11 +10,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-#root {
-    min-width: $min-width;
-    max-width: $max-width;
+    // @include debug-mod;
 }
 
 html {
@@ -22,16 +18,17 @@ html {
     line-height: $line-height-base;
     color: $main-font-color;
     font-family: $main-font-family;
+    
 }
 
 body {
-    font-size: $paragraph;
-    background-color: $main-theme-color;
     min-width: $min-width;
     max-width: $max-width;
     min-height: $min-height;
     margin: auto;
-    overflow-x: hidden; //provisoirement
+    font-size: $paragraph;
+    background-color: $main-theme-color;
+    overflow-x: hidden;
 
     /* List */
     li {
@@ -43,181 +40,19 @@ body {
         padding: $padding-default;
         border-radius: 0.5rem;
         color: $main-font-color;
-        font-size: 1.8rem;
+        // font-size: 1.8rem;
         text-decoration: none;
         background-color: transparent;
         filter: drop-shadow(5px 5px 4px $tiers-theme-color);
         transition: filter 0.2s ease-in-out, background-color 0.2s ease-in-out;
     }
 
-    /* Header */
-    header {
-        display: flex;
-        flex-wrap: wrap;
-        gap: $gap-default;
-        padding: $padding-default;
-        margin: 0 0 $margin-default;
-        height: 10vh;
-        background-color: $second-theme-color;
-        border-radius: 0 0 1rem 1rem;
-
-        h1.header-title {
-            flex-basis: 100%;
-            font-weight: normal;
-        }
-
-        /* Navbar */
-        nav#navBar {
-            @include flex-center($gap: 0);
-            width: 100%;
-            background-color: $main-theme-color;
-            border-radius: 1rem;
-
-            ul {
-                @include flex-center($gap: 0);
-                width: 100%;
-
-                li {
-                    margin-left: $margin-default;
-
-                    a {
-                        font-size: clamp($min-font-size, 3.5vw, $max-font-size);
-                        &:hover {
-                            filter: drop-shadow(5px 5px 4px $tiers-theme-color);
-                            background-color: $tiers-theme-color;
-                        }
-                    }
-                }
-            }
-        }
-
-        /*end NAvBar*/
-    }
-
-    /* end Header */
 
     #main-Container {
         @include flex-center;
-        padding: 1rem;
-    }
-}
-
-// /* Sections */
-// section.section-highLight {
-//     @include section-container($flex-direction: column,
-//         $backgroundColor: $tiers-theme-color );
-// }
-
-// section.section-usual {
-//     @include section-container($flex-wrap: wrap, $gap: 0);
-
-//     @media screen and (min-width: 769px) {
-//         display: unset;
-//         display: flex;
-//         align-items: center;
-//         justify-content: space-evenly;
-//     }
-// }
-
-footer {
-    @include section-container($flex-wrap: wrap,
-        $backgroundColor: $tiers-theme-color );
-    margin-top: $margin-default;
-
-    @media screen and (min-width: 769px) {
-        display: grid;
-        grid-template-columns: repeat(3, 30vh, auto);
-        grid-template-rows: repeat(2, auto);
-        align-items: center;
-        justify-items: center;
-    }
-
-    section {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: $gap-default;
-        flex-basis: 100%;
+        min-width: $min-width;
+        max-width: $max-width;
         width: 100%;
-
-        h2,
-        h3 {
-            text-align: center;
-        }
-
-        p {
-            width: 100%;
-        }
-    }
-
-    section#section-about-me {
-        @media screen and (min-width: 769px) {
-            grid-column: 1;
-            grid-row: 1;
-            display: flex;
-            flex-direction: column;
-        }
-    }
-
-    .dotted-border {
-        width: 100%;
-        border: 0.1rem dashed $main-theme-color;
-
-        @media screen and (min-width: 769px) {
-            display: none;
-        }
-    }
-
-    .section-projects {
-        @media screen and (min-width: 769px) {
-            grid-column: 2;
-            grid-row: 1;
-            border-left: 0.2rem dashed $main-theme-color;
-            border-right: 0.2rem dashed $main-theme-color;
-            align-self: stretch;
-            align-content: stretch;
-            height: 100%;
-        }
-
-        .container-preview-article {
-            flex-basis: 30%;
-        }
-    }
-
-    section#section-contact {
-        @media screen and (min-width: 769px) {
-            grid-column: 3;
-            grid-row: 1;
-            flex-direction: column;
-        }
-
-        ul#section-social-links,
-        ul#section-contact-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: inherit;
-        }
-    }
-
-    section#section-copyright {
-        text-align: center;
-        padding: $padding-default;
-
-        @media screen and (min-width: 769px) {
-            grid-column: span 3;
-            grid-row: 2;
-            border-top: 0.2rem dashed $main-theme-color;
-        }
-
-        #copyright-texts {
-            @include flex-center();
-            gap: $gap-default;
-            padding: $padding-default;
-            margin: $margin-default;
-            font-weight: normal;
-        }
     }
 }
 

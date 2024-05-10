@@ -1,0 +1,23 @@
+   @import "../sass/variables";
+   @import "../sass/mixins";
+
+   /* Header */
+   header {
+       display: flex;
+       flex-wrap: wrap;
+       gap: $gap-default;
+       padding: $padding-default;
+       margin: 0 0 $margin-default;
+       width: 100%;
+       height: 10vh;
+       background-color: $second-theme-color;
+       border-radius: 1rem;
+
+       h1.header-title {
+           flex-basis: 100%;
+           font-weight: normal;
+       }
+
+   }
+
+   /* end Header */

@@ -1,0 +1,15 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+/* Sections usual*/
+
+section.section-usual {
+    @include section-container($flex-wrap: wrap);
+
+    @media screen and (min-width: 768px) {
+        display: unset;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}

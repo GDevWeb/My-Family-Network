@@ -1,0 +1,30 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+/* Navbar */
+nav#navBar {
+    @include flex-center($gap: 0);
+    width: 100%;
+    background-color: $main-theme-color;
+    border-radius: 1rem;
+
+    ul {
+        @include flex-center($gap: 0);
+        width: 100%;
+
+        .navLink {
+            margin-left: $margin-default;
+            font-size: clamp($min-font-size, 3.5vw, $max-font-size);
+
+            &:hover {
+                filter: drop-shadow(5px 5px 4px $tiers-theme-color);
+                background-color: $tiers-theme-color;
+            }
+
+            &.activeLink,
+            &.active {
+                text-decoration: underline;
+            }
+        }
+    }
+}

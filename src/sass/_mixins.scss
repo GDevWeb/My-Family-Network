@@ -153,49 +153,6 @@
     }
 }
 
-
-/* Sections */
-section.section-highLight {
-    @include section-container($flex-direction: column,
-        $backgroundColor: $tiers-theme-color );
-}
-
-section.section-usual {
-    @include section-container($flex-wrap: wrap);
-
-    @media screen and (min-width: 768px) {
-        display: unset;
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-}
-
-
-/* Container preview article */
-.container-preview-article {
-    @include flex-center($gap: 0);
-    flex-direction: column;
-    padding: $padding-default;
-    border-radius: $default-border-radius;
-    background-color: transparent;
-    filter: drop-shadow();
-    transition: backgroundColor 0.2s ease-in-out;
-
-    &:hover {
-        filter: drop-shadow(5px 5px 4px $main-font-color);
-        background-color: $tiers-theme-color;
-    }
-
-    @media screen and (min-width: 1026px) {
-        flex-basis: 30%;
-    }
-
-}
-
-/* end Container preview article */
-
-
 /* Debug Mode */
 @mixin debug-mod() {
     border: 1px solid red;

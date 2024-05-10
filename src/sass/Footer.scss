@@ -1,0 +1,106 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+footer {
+  @include section-container(
+    $flex-wrap: wrap,
+    $backgroundColor: $tiers-theme-color
+  );
+  margin-top: $margin-default;
+
+  @media screen and (min-width: 769px) {
+    display: grid;
+    grid-template-columns: repeat(3, 30vh, auto);
+    grid-template-rows: repeat(2, auto);
+    align-items: center;
+    justify-items: center;
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: $gap-default;
+    flex-basis: 100%;
+    width: 100%;
+
+    h2,
+    h3 {
+      text-align: center;
+    }
+
+    p {
+      width: 100%;
+    }
+  }
+
+  section#section-about-me {
+    @media screen and (min-width: 769px) {
+      grid-column: 1;
+      grid-row: 1;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .dotted-border {
+    width: 100%;
+    border: 0.1rem dashed $main-theme-color;
+
+    @media screen and (min-width: 769px) {
+      display: none;
+    }
+  }
+
+  .section-projects {
+    @media screen and (min-width: 769px) {
+      grid-column: 2;
+      grid-row: 1;
+      border-left: 0.2rem dashed $main-theme-color;
+      border-right: 0.2rem dashed $main-theme-color;
+      align-self: stretch;
+      align-content: stretch;
+      height: 100%;
+    }
+
+    .container-preview-article {
+      flex-basis: 30%;
+    }
+  }
+
+  section#section-contact {
+    @media screen and (min-width: 769px) {
+      grid-column: 3;
+      grid-row: 1;
+      flex-direction: column;
+    }
+
+    ul#section-social-links,
+    ul#section-contact-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: inherit;
+    }
+  }
+
+  section#section-copyright {
+    text-align: center;
+    padding: $padding-default;
+
+    @media screen and (min-width: 769px) {
+      grid-column: span 3;
+      grid-row: 2;
+      border-top: 0.2rem dashed $main-theme-color;
+    }
+
+    #copyright-texts {
+      @include flex-center();
+      gap: $gap-default;
+      padding: $padding-default;
+      margin: $margin-default;
+      font-weight: normal;
+    }
+  }
+}

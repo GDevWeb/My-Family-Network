@@ -1,0 +1,24 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+
+/* Container preview article */
+.container-card-preview-article {
+    @include flex-center($gap: 0);
+    flex-direction: column;
+    padding: $padding-default;
+    border-radius: $default-border-radius;
+    background-color: transparent;
+    filter: drop-shadow();
+    transition: backgroundColor 0.2s ease-in-out;
+
+    &:hover {
+        filter: drop-shadow(5px 5px 4px $main-font-color);
+        background-color: $tiers-theme-color;
+    }
+
+    @media screen and (min-width: 1026px) {
+        flex-basis: 30%;
+    }
+
+}

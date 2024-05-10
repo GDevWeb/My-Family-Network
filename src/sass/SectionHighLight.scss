@@ -1,0 +1,7 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+section.section-highLight {
+    @include section-container($flex-direction: column,
+        $backgroundColor: $tiers-theme-color );
+}
