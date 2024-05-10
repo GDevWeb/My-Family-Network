@@ -81,7 +81,7 @@ export default function App() {
               className="section-illustration-preview-article"
             />
             <div className="article-title">
-              <p>Titre de l'article</p>
+              <h3>Titre de l'article</h3>
             </div>
             <h4 className="date">
               <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
@@ -95,7 +95,7 @@ export default function App() {
               className="section-illustration-preview-article"
             />
             <div className="article-title">
-              <p>Titre de l'article</p>
+              <h3>Titre de l'article</h3>
             </div>
             <h4 className="date">
               <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
@@ -109,7 +109,7 @@ export default function App() {
               className="section-illustration-preview-article"
             />
             <div className="article-title">
-              <p>Titre de l'article</p>
+              <h3>Titre de l'article</h3>
             </div>
             <h4 className="date">
               <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
@@ -123,7 +123,7 @@ export default function App() {
               className="section-illustration-preview-article"
             />
             <div className="article-title">
-              <p>Titre de l'article</p>
+              <h3>Titre de l'article</h3>
             </div>
             <h4 className="date">
               <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
@@ -137,7 +137,7 @@ export default function App() {
               className="section-illustration-preview-article"
             />
             <div className="article-title">
-              <p>Titre de l'article</p>
+              <h3>Titre de l'article</h3>
             </div>
             <h4 className="date">
               <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
