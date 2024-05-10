@@ -67,6 +67,34 @@ export default function App() {
               className="section-illustration-preview-article"
             />
             <div className="article-title">
+              <h3>Titre de l'article</h3>
+            </div>
+            <h4 className="date">
+              <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
+              2024
+            </h4>
+          </div>
+          <div className="container-preview-article">
+            <img
+              src={imgPreviewArticle}
+              alt={`illustration de l'article, nom de la photo :${imgPreviewArticle}`}
+              className="section-illustration-preview-article"
+            />
+            <div className="article-title">
+              <p>Titre de l'article</p>
+            </div>
+            <h4 className="date">
+              <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
+              2024
+            </h4>
+          </div>
+          <div className="container-preview-article">
+            <img
+              src={imgPreviewArticle}
+              alt={`illustration de l'article, nom de la photo :${imgPreviewArticle}`}
+              className="section-illustration-preview-article"
+            />
+            <div className="article-title">
               <p>Titre de l'article</p>
             </div>
             <h4 className="date">
@@ -119,9 +147,37 @@ export default function App() {
         </section>
         {/* end section derniers articles */}
 
-        {/* end section articles les plus vus*/}
+        {/* Début section articles les plus vus*/}
         <section className="section-usual">
           <h3 className="section-title">Articles les plus vus</h3>
+          <div className="container-preview-article">
+            <img
+              src={imgPreviewArticle}
+              alt={`illustration de l'article, nom de la photo :${imgPreviewArticle}`}
+              className="section-illustration-preview-article"
+            />
+            <div className="article-title">
+              <p>Titre de l'article</p>
+            </div>
+            <h4 className="date">
+              <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
+              2024
+            </h4>
+          </div>
+          <div className="container-preview-article">
+            <img
+              src={imgPreviewArticle}
+              alt={`illustration de l'article, nom de la photo :${imgPreviewArticle}`}
+              className="section-illustration-preview-article"
+            />
+            <div className="article-title">
+              <p>Titre de l'article</p>
+            </div>
+            <h4 className="date">
+              <img src={iconDate} alt="icône date" className="icon" /> le 09 mai
+              2024
+            </h4>
+          </div>
           <div className="container-preview-article">
             <img
               src={imgPreviewArticle}
