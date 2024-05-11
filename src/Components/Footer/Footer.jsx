@@ -24,11 +24,11 @@ function Footer() {
         <p> Contactez-moi pour des solutions web sur mesure !</p>
         <p>Dammaretz Gaëtan alias GDEvWEb</p>
       </section>
-      <div className="dotted-border"></div>
+      {/* end section about  */}
       {/* section projects  */}
       <section className="section-projects">
         <h2>Mes projets</h2>
-        <div className="container-preview-article">
+        <div className="container-preview-article one">
           <img
             src={indexImages.imgPreviewProject}
             alt={`illustration de l'article, nom de la photo :${indexImages.imgPreviewProject}`}
@@ -38,7 +38,7 @@ function Footer() {
             <p>Projet#1</p>
           </div>
         </div>
-        <div className="container-preview-article">
+        <div className="container-preview-article two">
           <img
             src={indexImages.imgPreviewProject}
             alt={`illustration de l'article, nom de la photo :${indexImages.imgPreviewProject}`}
@@ -48,7 +48,7 @@ function Footer() {
             <p>Projet#2</p>
           </div>
         </div>
-        <div className="container-preview-article">
+        <div className="container-preview-article three">
           <img
             src={indexImages.imgPreviewProject}
             alt={`illustration de l'article, nom de la photo :${indexImages.imgPreviewProject}`}
@@ -59,20 +59,23 @@ function Footer() {
           </div>
         </div>
       </section>
-      <div className="dotted-border"></div>
+      {/* end section projects  */}
       {/* section contact  */}
       <section id="section-contact">
         <h2>Contact</h2>
-        <h3>Retrouvez-moi sur :</h3>
         <section id="section-social-links">
+        <h3>Retrouvez-moi sur :</h3>
           <ul id="section-social-links">
             <li>
-              <a href="https://www.linkedin.com/in/ga%C3%ABtan-dammaretz/">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/ga%C3%ABtan-dammaretz/"
+              >
                 <img src={indexIcons.iconLinkedin} alt="icône linkedin" />
               </a>
             </li>
             <li>
-              <a href="https://github.com/GDevWeb">
+              <a target="_blank" href="https://github.com/GDevWeb">
                 <img src={indexIcons.iconGithub} alt="icône github" />
               </a>
             </li>
@@ -82,12 +85,12 @@ function Footer() {
           <h3>Contactez-moi via :</h3>
           <ul id="section-contact-links">
             <li>
-              <a href="mailto:gaetan.dammaretz.dev@gmail.com">
+              <a target="_blank" href="mailto:gaetan.dammaretz.dev@gmail.com">
                 <img src={indexIcons.iconGmail} alt="icône gmail" />
               </a>
             </li>
             <li>
-              <a href="https://github.com/GDevWeb">
+              <a target="_blank" href="https://www.linkedin.com/in/ga%C3%ABtan-dammaretz/">
                 <img src={indexIcons.iconLinkedin} alt="icône linkedin" />
               </a>
             </li>
@@ -97,7 +100,7 @@ function Footer() {
           <h3>Mon portfolio :</h3>
           <ul id="section-portfolio">
             <li>
-              <a href="https://gdevweb.vercel.app/">
+              <a target="_blank" href="https://gdevweb.vercel.app/">
                 <img src={indexIcons.iconPortfolio} alt="icône portfolio" />
               </a>
             </li>
@@ -105,7 +108,6 @@ function Footer() {
         </section>
       </section>
       {/* end section contact  */}
-      <div className="dotted-border"></div>
       <section id="section-copyright">
         <div id="copyright-texts">
           <h4>

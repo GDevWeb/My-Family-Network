@@ -35,3 +35,5 @@ export default function CardPreviewArticle({
     </div>
   );
 }
+
+// ajouter linkto en props

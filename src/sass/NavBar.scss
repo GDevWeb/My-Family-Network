@@ -6,7 +6,7 @@ nav#navBar {
     @include flex-center($gap: 0);
     width: 100%;
     background-color: $main-theme-color;
-    border-radius: 1rem;
+    border-radius: 25px;
 
     ul {
         @include flex-center($gap: 0);

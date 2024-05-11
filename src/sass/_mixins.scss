@@ -4,8 +4,9 @@
 @import "variables";
 
 /* flex */
-@mixin flex-center($wrap: wrap, $gap: $gap-default) {
+@mixin flex-center($flex-direction: row, $wrap: wrap, $gap: $gap-default) {
     display: flex;
+    flex-direction: $flex-direction;
     align-items: center;
     justify-content: center;
     flex-wrap: $wrap;
@@ -85,7 +86,7 @@
 
     &:hover {
         background-color: darken($backgroundColor, 10%);
-        filter: drop-shadow(5px 5px 4px $main-font-color); // Ajout de l'effet de drop-shadow
+        filter: drop-shadow(5px 5px 4px $main-font-color); 
     }
 
     h2,
@@ -152,6 +153,7 @@
         }
     }
 }
+/* end mixin section-container */
 
 /* Debug Mode */
 @mixin debug-mod() {
