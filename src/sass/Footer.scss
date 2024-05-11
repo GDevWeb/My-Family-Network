@@ -4,11 +4,7 @@
 footer {
   @include section-container($flex-wrap: wrap, $gap: 5rem,
     $backgroundColor: $tiers-theme-color );
-  
-  @media screen and (min-width: 769px) {
-    
-  }
-  
+
   section {
     display: flex;
     flex-wrap: wrap;
@@ -17,13 +13,10 @@ footer {
     flex-basis: 100%;
     gap: $gap-default;
     padding: $gap-default;
-    
-    @media screen and (min-width: 769px) {
-      
-    }
 
     h2,
-    h3 {
+    h3,
+    h4 {
       text-align: center;
     }
 

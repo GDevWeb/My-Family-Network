@@ -9,7 +9,7 @@ import Footer from "../Components/Footer/Footer";
 export default function Root() {
   return (
     <>
-      <div id="main-Container">
+      <div id="wrapper">
         <Header />
         <Routes>
           <Route path="/" element={<PageHome />} />
