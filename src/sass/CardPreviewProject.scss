@@ -1,0 +1,35 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+.container-card-preview-project {
+  display: flex;
+  gap: $gap-default;
+  padding: $padding-default;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-basis: 45%;
+  text-align: center;
+  border-radius: $default-border-radius;
+
+  @media screen and (min-width: 768px) {
+    flex-basis: 30%;
+  }
+
+  &:hover {
+    color: $main-font-color;
+    background-color: $tiers-theme-color;
+    filter: drop-shadow(5px 5px 4px $main-font-color);
+  }
+
+  img.illustration-preview-project {
+    @include responsive-image();
+  }
+
+  .project-name:has(p) {
+    font-weight: bolder;
+  }
+
+
+
+}
