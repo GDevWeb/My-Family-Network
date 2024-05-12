@@ -16,7 +16,8 @@ nav#navbar-sidebar {
             width: 100%;
             text-align: center;
 
-            a.navLink {
+
+            .navLink {
                 margin-left: $margin-default;
                 font-size: clamp($min-font-size, 3.5vw, $max-font-size);
 
@@ -24,14 +25,13 @@ nav#navbar-sidebar {
                     filter: drop-shadow(5px 5px 4px $tiers-theme-color);
                     background-color: $tiers-theme-color;
                 }
-
-                &.activeLink,
-                &.active {
-                    text-decoration: underline;
-                }
             }
-
         }
 
     }
+}
+
+#album-content{
+    @include section-container($flex-wrap: wrap);
+    text-align: center;
 }

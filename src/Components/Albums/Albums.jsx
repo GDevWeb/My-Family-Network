@@ -1,18 +1,22 @@
+import { Link, useLocation, Outlet } from "react-router-dom";
 import listAlbums from "./ListAlbums";
 import "../../sass/Albums.scss";
-import { Link, Outlet } from "react-router-dom";
 
 export default function Albums() {
   // 1. State:
-
+  const location = useLocation();
   // 2.Behavior:
   const listElement = listAlbums.map((album) => {
     const { id, albumName } = album;
+    const isActive = location.pathname === `/albums/album/${album.id}`;
+
+    const activeStyle = isActive ? { textDecoration: "underline" } : {};
     return (
       <Link
         to={`/albums/album/${album.id}`}
         key={id}
         className="navbar-sidebar-element "
+        style={activeStyle}
       >
         <a href="#" className="navLink">
           {albumName}

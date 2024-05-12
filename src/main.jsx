@@ -6,7 +6,6 @@ import Root from "./Routes/root";
 import PageError from "./Pages/PageError";
 import PageHome from "./Pages/PageHome";
 import PageAlbums from "./Pages/PageAlbums";
-import PageAlbumDetail from "./Pages/PageAlbumDetail";
 import PageLogin from "./Pages/PageLogin";
 
 const router = createBrowserRouter([
@@ -16,20 +15,7 @@ const router = createBrowserRouter([
     errorElement: <PageError />,
     children: [
       { path: "home", element: <PageHome /> },
-      {
-        path: "albums",
-        element: <PageAlbums />,
-        children: [
-          {
-            path: "",
-            element: <PageAlbums />,
-          },
-          {
-            path: ":id",
-            element: <PageAlbumDetail />,
-          },
-        ],
-      },
+      { path: "albums/*", element: <PageAlbums /> },
       { path: "login", element: <PageLogin /> },
     ],
   },
