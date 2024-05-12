@@ -7,7 +7,7 @@ import PageError from "../Pages/PageError";
 import Footer from "../Components/Footer/Footer";
 import PageAlbumDetail from "../Pages/PageAlbumDetail";
 
-export default function Root() {
+export default function root() {
   return (
     <>
       <div id="wrapper">
