@@ -13,7 +13,7 @@ export default function PageAlbumDetail() {
     return <h2>Album non trouvé !</h2>;
   }
   return (
-    <div id="album-content">
+    <>
       <h3 id="album-title">{selectedAlbum.albumName}</h3>
       <CardPreviewArticle />
       <CardPreviewArticle />
@@ -27,6 +27,6 @@ export default function PageAlbumDetail() {
       <CardPreviewArticle />
       <CardPreviewArticle />
       <CardPreviewArticle />
-    </div>
+    </>
   );
 }

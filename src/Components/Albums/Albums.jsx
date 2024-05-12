@@ -27,14 +27,16 @@ export default function Albums() {
   // 3.Render:
   return (
     <>
-      <nav id="navbar-sidebar">
-        <div id="navbar-sidebar-title">
-          <h2>Albums</h2>
-        </div>
-        <ul id="navbar-sidebar-list">{listElement}</ul>
-      </nav>
       <div id="main-container">
-        <Outlet />
+        <nav id="navbar-sidebar">
+          <div id="navbar-sidebar-title">
+            <h2>Albums</h2>
+          </div>
+          <ul id="navbar-sidebar-list">{listElement}</ul>
+        </nav>
+        <div id="album-content">
+          <Outlet />
+        </div>
       </div>
     </>
   );

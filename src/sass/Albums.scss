@@ -1,8 +1,26 @@
 @import "../sass/variables";
 @import "../sass/mixins";
 
+
+#main-container {
+    @include flex-center();
+
+    @media screen and (min-width: 769px) {
+        align-items: stretch;
+        flex-wrap: nowrap;
+    }
+
+}
+
 nav#navbar-sidebar {
     @include section-container($flex-wrap: wrap, $backgroundColor: $tiers-theme-color);
+
+    @media screen and (min-width: 769px) {
+        width: 30%;
+        min-height: 100vh;
+        align-items: flex-start;
+    }
+
 
     #navbar-sidebar-title {
         width: 100%;
@@ -11,6 +29,11 @@ nav#navbar-sidebar {
 
     #navbar-sidebar-list {
         @include flex-center();
+
+        @media screen and (min-width: 769px) {
+            line-height: 1.8;
+        }
+
 
         .navbar-sidebar-element {
             width: 100%;
@@ -29,19 +52,22 @@ nav#navbar-sidebar {
         }
 
     }
+
 }
 
+
 #album-content {
-    @include flex-center();
+    @include section-container($flex-wrap: wrap, $responsive-display-desktop: flex);
+
+
+    @media screen and (min-width: 769px) {
+        width: 70%;
+        min-height: 100vh;
+    }
 
     h3#album-title {
         width: 100%;
         text-align: center;
     }
 
-    .container-card-preview-article {
-
-        @media screen and (min-width: 769px) {
-        }
-    }
 }
