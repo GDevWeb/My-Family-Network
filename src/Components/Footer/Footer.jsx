@@ -37,6 +37,7 @@ function Footer() {
       <section id="section-contact">
         <ContentSectionContact />
       </section>
+      {/* section copyright  */}
       <section id="section-copyright">
         <ContentSectionCopyright />
       </section>

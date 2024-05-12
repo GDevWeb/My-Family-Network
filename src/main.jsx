@@ -2,7 +2,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.scss";
-import Root from "./Routes/Root";
+import Root from "./Routes/root";
 import PageError from "./Pages/PageError";
 import PageHome from "./Pages/PageHome";
 import PageAlbums from "./Pages/PageAlbums";
@@ -22,6 +22,10 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
+            element: <PageAlbums />,
+          },
+          {
+            path: ":id",
             element: <PageAlbumDetail />,
           },
         ],

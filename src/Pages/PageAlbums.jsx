@@ -1,7 +1,9 @@
-import React from 'react'
+import Albums from "../Components/Albums/Albums";
 
 export default function PageAlbums() {
   return (
-    <div>PageAlbums</div>
-  )
+    <>
+      <Albums />
+    </>
+  );
 }

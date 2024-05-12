@@ -1,0 +1,37 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+nav#navbar-sidebar {
+    @include section-container($flex-wrap: wrap, $backgroundColor: $tiers-theme-color);
+
+    #navbar-sidebar-title {
+        width: 100%;
+        text-align: center;
+    }
+
+    #navbar-sidebar-list {
+        @include flex-center();
+
+        .navbar-sidebar-element {
+            width: 100%;
+            text-align: center;
+
+            a.navLink {
+                margin-left: $margin-default;
+                font-size: clamp($min-font-size, 3.5vw, $max-font-size);
+
+                &:hover {
+                    filter: drop-shadow(5px 5px 4px $tiers-theme-color);
+                    background-color: $tiers-theme-color;
+                }
+
+                &.activeLink,
+                &.active {
+                    text-decoration: underline;
+                }
+            }
+
+        }
+
+    }
+}
