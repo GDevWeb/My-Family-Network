@@ -14,20 +14,19 @@ export default function PageAlbumDetail() {
   }
   return (
     <div id="album-content">
-      <h3>{selectedAlbum.albumName}</h3>
-      {/* <p>contenu de l'album</p> */}
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
-      <CardPreviewArticle/>
+      <h3 id="album-title">{selectedAlbum.albumName}</h3>
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
+      <CardPreviewArticle />
     </div>
   );
 }
