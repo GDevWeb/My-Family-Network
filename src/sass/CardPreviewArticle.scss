@@ -9,6 +9,7 @@
     padding: $padding-default;
     border-radius: $default-border-radius;
     background-color: transparent;
+    text-align: center;
     filter: drop-shadow();
     transition: backgroundColor 0.2s ease-in-out;
 
@@ -17,8 +18,13 @@
         background-color: $tiers-theme-color;
     }
 
-    @media screen and (min-width: 1026px) {
-        flex-basis: 30%;
+    @media screen and (min-width: 769px) {
+        flex-basis: 45%;
     }
+
+    img.section-illustration-preview-article{
+        @include responsive-image($width:250px);
+    }
+
 
 }

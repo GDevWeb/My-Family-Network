@@ -4,7 +4,8 @@ import imgPreviewProject from "./imgPreviewProject.png";
 import imgPreviewAlbumChristmas from "./imgPreviewAlbumChristmas.png";
 import imgPreviewAlbumEaster from "./imgPreviewAlbumEaster.png";
 import imgPreviewAlbumDisney from "./imgPreviewAlbumDisney.png";
-import imgPreviewAlbumBellewaerde from "./imgPreviewAlbumBellewaerde.webp";
+import imgPreviewAlbumBellewaerde_XL from "./imgPreviewAlbumBellewaerde_XL.webp";
+import imgPreviewAlbumBellewaerde_Mini from "./imgPreviewAlbumBellewaerde_Mini.webp";
 
 export default {
   imgArticle,
@@ -13,5 +14,6 @@ export default {
   imgPreviewAlbumChristmas,
   imgPreviewAlbumEaster,
   imgPreviewAlbumDisney,
-  imgPreviewAlbumBellewaerde,
+  imgPreviewAlbumBellewaerde_XL,
+  imgPreviewAlbumBellewaerde_Mini,
 };
