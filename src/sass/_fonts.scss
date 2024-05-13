@@ -40,7 +40,7 @@ h3 {
     font-size: clamp($min-font-size, 3.5vw, $max-font-size);
 }
 
-h4 {
+h4{
     font-size: clamp($min-font-size, 3vw, $max-font-size);
 }
 
@@ -52,7 +52,7 @@ h6 {
     font-size: clamp($min-font-size, 2vw, $max-font-size);
 }
 
-p {
+p, label {
     text-wrap: pretty;
     font-size: clamp($paragraph, 2vw, 2rem);
 }

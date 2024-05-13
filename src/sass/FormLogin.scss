@@ -1,0 +1,48 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+
+#formLogin{
+    @include section-container($flex-wrap:wrap);
+
+    @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: 1 auto;
+        grid-template-rows: repeat(4,auto);
+        
+    }
+
+    .formGroup{
+        @include flex-center($flex-direction:column);
+        
+
+        label{
+            font-weight: bolder;
+        }
+
+        input{
+            padding: 1rem 0.5rem;
+            border-radius: $default-border-radius;
+            text-align: center;
+        }
+
+
+
+
+    }
+
+    button.button-submit{
+        grid-column: 1;
+        grid-row: 3;
+        place-self: center;
+    }
+
+    p#create-account{
+        grid-row: 4;
+        font-weight: bolder;
+        text-align: center;
+    }
+
+
+
+}

@@ -57,7 +57,6 @@ nav#navbar-sidebar {
 #album-content {
     @include section-container($flex-wrap: wrap, $responsive-display-desktop: flex);
 
-
     @media screen and (min-width: 769px) {
         width: 70%;
         min-height: 100%;
@@ -68,4 +67,9 @@ nav#navbar-sidebar {
         width: 100%;
         text-align: center;
     }
+
+    h4#message-invit-toselect{
+        text-align: center;
+    }
+
 }

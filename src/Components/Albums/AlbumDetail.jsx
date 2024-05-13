@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
 import listAlbums from "./ListAlbums";
 import CardPreviewArticle from "../Cards/CardPreviewArticle";
 
@@ -12,12 +12,19 @@ export default function AlbumDetail() {
   const listPhotos = selectedAlbum.albumListPictures.map((photo) => {
     const { id, picture, title, articleDate } = photo;
     return (
-      <CardPreviewArticle
+      <Link
         key={id}
-        imgPreviewArticle={picture}
-        articleTitle={title}
-        articleDate={articleDate}
-      />
+        to={`/albums/album/${selectedAlbum.id}/article/${id}`}
+        className="card-link"
+        >
+      <CardPreviewArticle
+          key={id}
+          imgPreviewArticle={picture}
+          articleTitle={title}
+          articleDate={articleDate}
+          />
+          </Link>
+          // pour la redirection vers le contenu de l'article articleDetail
     );
   });
 

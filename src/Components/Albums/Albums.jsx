@@ -33,7 +33,9 @@ export default function Albums() {
   const outletContent = selectedAlbum ? (
     <Outlet />
   ) : (
-    `Sélectionnez un album à afficher`
+    <>
+      <h4 id="message-invit-toselect">Sélectionnez un album à afficher</h4>
+    </>
   );
 
   // 3.Render:
@@ -45,9 +47,7 @@ export default function Albums() {
         </div>
         <ul id="navbar-sidebar-list">{listElement}</ul>
       </nav>
-      <div id="album-content">
-        {outletContent}
-      </div>
+      <div id="album-content">{outletContent}</div>
     </div>
   );
 }

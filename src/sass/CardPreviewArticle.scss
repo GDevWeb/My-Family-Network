@@ -13,17 +13,20 @@
     filter: drop-shadow();
     transition: backgroundColor 0.2s ease-in-out;
 
-    &:hover {
-        filter: drop-shadow(5px 5px 4px $main-font-color);
-        background-color: $tiers-theme-color;
-    }
 
     @media screen and (min-width: 769px) {
         flex-basis: 30%;
     }
 
-    img.section-illustration-preview-article{
-        @include responsive-image($width:250px);
+
+    &:hover {
+        filter: drop-shadow(5px 5px 4px $main-font-color);
+        background-color: $tiers-theme-color;
+    }
+
+
+    img.section-illustration-preview-article {
+        @include responsive-image($width: 250px);
     }
 
 
