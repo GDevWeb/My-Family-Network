@@ -10,13 +10,6 @@ export default function AlbumDetail() {
   // 3.Render :
   return (
     <>
-      <h2>AlbumDetail</h2>
-
-      <h3>
-        Contiendra dynamiquement le contenu de chaque album correspondant via
-        useParams de React Router Dom
-      </h3>
-
       <h4>{params.id}</h4>
     </>
   );

@@ -4,6 +4,8 @@
 
 #main-container {
     @include flex-center();
+    width: 100%;
+    min-height: 50vh;
 
     @media screen and (min-width: 769px) {
         align-items: stretch;
@@ -17,7 +19,7 @@ nav#navbar-sidebar {
 
     @media screen and (min-width: 769px) {
         width: 30%;
-        min-height: 100vh;
+        min-height: 100%;
         align-items: flex-start;
     }
 
@@ -38,16 +40,12 @@ nav#navbar-sidebar {
         .navbar-sidebar-element {
             width: 100%;
             text-align: center;
+            margin-left: $margin-default;
+            font-size: clamp($min-font-size, 3.5vw, $max-font-size);
 
-
-            .navLink {
-                margin-left: $margin-default;
-                font-size: clamp($min-font-size, 3.5vw, $max-font-size);
-
-                &:hover {
-                    filter: drop-shadow(5px 5px 4px $tiers-theme-color);
-                    background-color: $tiers-theme-color;
-                }
+            &:hover {
+                filter: drop-shadow(5px 5px 4px $tiers-theme-color);
+                background-color: $tiers-theme-color;
             }
         }
 
@@ -62,7 +60,8 @@ nav#navbar-sidebar {
 
     @media screen and (min-width: 769px) {
         width: 70%;
-        min-height: 100vh;
+        min-height: 100%;
+        flex-wrap: wrap;
     }
 
     h2,h3#album-title {
@@ -70,4 +69,13 @@ nav#navbar-sidebar {
         text-align: center;
     }
 
+    
 }
+    .container-card-preview-article{
+
+        @media screen and (min-width: 769px) {
+            text-align: center;
+            flex-basis: 45%;
+            
+        }
+    }

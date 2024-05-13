@@ -27,7 +27,7 @@ const listAlbums = [
     id: nanoid(8),
     albumPicture: imgPreviewAlbumDisney,
     albumName: "Sortie Printemps 2024 Disney",
-    albumLink: "",
+    albumLink: "#",
     albumListPictures: "#",
   },
   {

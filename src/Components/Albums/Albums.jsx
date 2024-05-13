@@ -17,12 +17,10 @@ export default function Albums() {
       <Link
         to={`/albums/album/${album.id}`}
         key={id}
-        className="navbar-sidebar-element "
+        className="navbar-sidebar-element"
         style={activeStyle}
       >
-        <a href="#" className="navLink">
-          {albumName}
-        </a>
+        {albumName}
       </Link>
     );
   });
@@ -32,7 +30,11 @@ export default function Albums() {
     return isActive;
   });
 
-  const outletContent = selectedAlbum ? <Outlet /> : `Sélectionnez un album à afficher`;
+  const outletContent = selectedAlbum ? (
+    <Outlet />
+  ) : (
+    `Sélectionnez un album à afficher`
+  );
 
   // 3.Render:
   return (
@@ -44,7 +46,7 @@ export default function Albums() {
         <ul id="navbar-sidebar-list">{listElement}</ul>
       </nav>
       <div id="album-content">
-        <h2>{outletContent}</h2>
+        {outletContent}
       </div>
     </div>
   );
