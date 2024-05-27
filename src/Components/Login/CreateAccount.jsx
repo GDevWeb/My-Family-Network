@@ -10,6 +10,7 @@ export default function CreateAccount() {
     age: "",
     familyGrade: "",
     email: "",
+    confirmEmail: "",
     password: "",
     confirmPassword: "",
   });
@@ -20,6 +21,7 @@ export default function CreateAccount() {
     age: false,
     familyGrade: false,
     email: false,
+    confirmEmail: false,
     password: false,
     confirmPassword: false,
   });
@@ -68,7 +70,9 @@ export default function CreateAccount() {
         if (response.ok) {
           alert("Compte créé avec succès !");
           // Rediriger ou effectuer d'autres actions
-          navigate("/login");
+          setTimeout(() => {
+            navigate("/login");
+          }, 30000);
         } else {
           setInvalidFormMessage(data.message || "Une erreur est survenue");
         }
@@ -86,6 +90,8 @@ export default function CreateAccount() {
       age: /^[1-9][0-9]?$|^100$/.test(data.age),
       familyGrade: data.familyGrade !== "",
       email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(data.email),
+      confirmEmail:
+        data.confirmEmail === data.email && data.confirmEmail !== "",
       password: data.password !== "",
       confirmPassword:
         data.confirmPassword === data.password && data.confirmPassword !== "",
@@ -97,6 +103,7 @@ export default function CreateAccount() {
       age: !areValid.age,
       familyGrade: !areValid.familyGrade,
       email: !areValid.email,
+      confirmEmail: !areValid.confirmEmail,
       password: !areValid.password,
       confirmPassword: !areValid.confirmPassword,
     });
@@ -206,6 +213,25 @@ export default function CreateAccount() {
           )}
         </div>
       </div>
+      <div id="inputConfirmMail" className="inputGroup">
+        <label htmlFor="inputConfirmMail">Confirmer E-mail</label>
+        <input
+          type="email"
+          name="confirmEmail"
+          id="inputConfirmMail"
+          placeholder="Confirmer votre mail"
+          value={formData.confirmEmail}
+          onChange={handleChange}
+          className={showValidation.confirmEmail ? "error" : ""}
+        />
+        <div className="input-error-message-container">
+          {showValidation.confirmEmail && (
+            <span className="error-message">
+              La confirmation de l'e-mail est requise
+            </span>
+          )}
+        </div>
+      </div>
       <div id="inputPassword" className="inputGroup">
         <label htmlFor="inputPassword">Mot de passe</label>
         <input
@@ -252,14 +278,18 @@ export default function CreateAccount() {
           Envoyer
         </button>
       </div>
-      {isValidForm && (
-        <p className="validation-message">
-          Inscription réussie - N'oubliez pas vos identifiants
-        </p>
-      )}
-      {invalidFormMessage && (
-        <p className="error-message">{invalidFormMessage}</p>
-      )}
+      <div id="validation-message-container">
+        {isValidForm && (
+          <p className="validation-message">
+            Formulaire valide - Prêt à être envoyer
+          </p>
+        )}
+      </div>
+      <div id="invalidation-message-container">
+        {invalidFormMessage && (
+          <p className="error-message">{invalidFormMessage}</p>
+        )}
+      </div>
     </form>
   );
 }
