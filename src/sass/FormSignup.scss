@@ -1,10 +1,11 @@
 @import "../sass/variables";
 @import "../sass/mixins";
 
-form#formSignup {
-    @include section-container($flex-wrap: wrap);
+form#formSignUp {
+    @include section-container($flex-wrap: wrap, $default-grid-template-columns: repeat(2, 1fr), $default-grid-template-rows: repeat(6, 1fr));
 
-    h2 {
+    h2#formTitle {
+        grid-column: span 2;
         width: 100%;
         text-align: center;
     }
@@ -17,6 +18,7 @@ form#formSignup {
         justify-content: space-evenly;
         gap: $gap-default;
         width: 100%;
+
 
         label {
             width: 100%;
@@ -33,4 +35,59 @@ form#formSignup {
         }
     }
 
+    // position in grid : 
+    #inputFirstName.inputGroup {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    #inputLastName.inputGroup {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    #inputLastName.inputGroup {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    #inputAge.inputGroup {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    #inputFamilyGrade.inputGroup {
+        grid-column: 2;
+        grid-row: 3;
+    }
+
+    #inputMail.inputGroup {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    #inputPassword.inputGroup {
+        grid-column: 1;
+        grid-row: 5;
+    }
+
+    #inputConfirmPassword.inputGroup {
+        grid-column: 2;
+        grid-row: 5;
+    }
+
+    #submit-button-container {
+        @include flex-center;
+        padding: $padding-default;
+        grid-column: span 2;
+        grid-row: 6;
+        align-self: center;
+        align-content: center;
+    }
+
+    .input-error-message-container{
+        width: 100%;
+        text-align: center;
+        padding: $padding-default;
+    }
 }

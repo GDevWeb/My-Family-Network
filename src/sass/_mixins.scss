@@ -65,6 +65,8 @@
     $backgroundColor: $second-theme-color,
     $border-radius: $default-border-radius,
     $responsive-display-desktop: grid,
+    $default-grid-template-rows: repeat(4, 1fr, auto),
+    $default-grid-template-columns: repeat(2, 1fr,auto),
 ) {
     display: $display;
     flex-direction: $flex-direction;
@@ -82,8 +84,8 @@
 
     @media screen and (min-width: 769px) {
         display: $responsive-display-desktop;
-        grid-template-rows: repeat(4, 1fr, auto);
-        grid-template-columns: repeat(2, 1fr,auto);
+        grid-template-rows: $default-grid-template-rows;
+        grid-template-columns: $default-grid-template-columns;
     }
 
     &:hover {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; // Correct usage for React Router v6+
 import "../../sass/FormSignup.scss";
 
 export default function CreateAccount() {
@@ -25,7 +25,9 @@ export default function CreateAccount() {
   });
 
   const [isValidForm, setIsValidForm] = useState(false);
-  const [invalidFormMessage, setInvalideFormMessage] = useState("");
+  const [invalidFormMessage, setInvalidFormMessage] = useState("");
+
+  const navigate = useNavigate(); // Correct usage of useNavigate
 
   // 2. Behavior:
   const handleChange = (e) => {
@@ -34,12 +36,13 @@ export default function CreateAccount() {
       ...prevData,
       [name]: value,
     }));
+    validationCheck({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (validationCheck()) {
+    if (isValidForm) {
       console.log("Envoi du formulaire");
 
       // Envoi les données au backend
@@ -65,107 +68,47 @@ export default function CreateAccount() {
         if (response.ok) {
           alert("Compte créé avec succès !");
           // Rediriger ou effectuer d'autres actions
-          redirect("/login");
+          navigate("/login");
         } else {
-          setInvalideFormMessage(data.message || "Une erreur est survenue");
+          setInvalidFormMessage(data.message || "Une erreur est survenue");
         }
       } catch (error) {
         console.error("Erreur:", error);
-        setInvalideFormMessage("Erreur lors de la création du compte");
+        setInvalidFormMessage("Erreur lors de la création du compte");
       }
     }
   };
 
-  const validationCheck = () => {
+  const validationCheck = (data) => {
     const areValid = {
-      firstName: false,
-      lastName: false,
-      age: false,
-      familyGrade: false,
-      email: false,
-      password: false,
-      confirmPassword: false,
+      firstName: /^[a-zA-Z\s-]{3,64}$/.test(data.firstName),
+      lastName: /^[a-zA-Z\s-]{3,64}$/.test(data.lastName),
+      age: /^[1-9][0-9]?$|^100$/.test(data.age),
+      familyGrade: data.familyGrade !== "",
+      email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(data.email),
+      password: data.password !== "",
+      confirmPassword:
+        data.confirmPassword === data.password && data.confirmPassword !== "",
     };
 
-    const regexAlpha = /^[a-zA-Z\s-]{3,64}$/;
+    setShowValidation({
+      firstName: !areValid.firstName,
+      lastName: !areValid.lastName,
+      age: !areValid.age,
+      familyGrade: !areValid.familyGrade,
+      email: !areValid.email,
+      password: !areValid.password,
+      confirmPassword: !areValid.confirmPassword,
+    });
 
-    if (!regexAlpha.test(formData.lastName)) {
-      setShowValidation((state) => ({ ...state, lastName: true }));
-    } else {
-      areValid.lastName = true;
-      setShowValidation((state) => ({ ...state, lastName: false }));
-    }
-
-    if (!regexAlpha.test(formData.firstName)) {
-      setShowValidation((state) => ({ ...state, firstName: true }));
-    } else {
-      areValid.firstName = true;
-      setShowValidation((state) => ({ ...state, firstName: false }));
-    }
-
-    const regexAge = /^[1-9][0-9]?$|^100$/;
-    if (!regexAge.test(formData.age)) {
-      setShowValidation((state) => ({ ...state, age: true }));
-    } else {
-      areValid.age = true;
-      setShowValidation((state) => ({ ...state, age: false }));
-    }
-
-    if (formData.familyGrade === "") {
-      setShowValidation((state) => ({ ...state, familyGrade: true }));
-    } else {
-      areValid.familyGrade = true;
-      setShowValidation((state) => ({ ...state, familyGrade: false }));
-    }
-
-    const regexMail = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
-
-    if (formData.email === "" || !regexMail.test(formData.email)) {
-      setShowValidation((state) => ({ ...state, email: true }));
-    } else {
-      areValid.email = true;
-      setShowValidation((state) => ({ ...state, email: false }));
-    }
-
-    if (formData.password === "") {
-      setShowValidation((state) => ({ ...state, password: true }));
-    } else {
-      areValid.password = true;
-      setShowValidation((state) => ({ ...state, password: false }));
-    }
-
-    if (
-      formData.confirmPassword === "" ||
-      formData.confirmPassword !== formData.password
-    ) {
-      setShowValidation((state) => ({ ...state, confirmPassword: true }));
-    } else {
-      areValid.confirmPassword = true;
-      setShowValidation((state) => ({ ...state, confirmPassword: false }));
-    }
-
-    if (Object.values(areValid).every((value) => value === true)) {
-      setIsValidForm(true);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        age: "",
-        familyGrade: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
-      return true;
-    } else {
-      return false;
-    }
+    setIsValidForm(Object.values(areValid).every((value) => value === true));
   };
 
   // 3. Render:
   return (
-    <form onSubmit={handleSubmit} id="formSignup">
-      <h2>Créer un compte</h2>
-      <div className="inputGroup">
+    <form onSubmit={handleSubmit} id="formSignUp">
+      <h2 id="formTitle">Créer un compte</h2>
+      <div id="inputFirstName" className="inputGroup">
         <label htmlFor="inputFirstName">Prénom</label>
         <input
           type="text"
@@ -176,11 +119,13 @@ export default function CreateAccount() {
           onChange={handleChange}
           className={showValidation.firstName ? "error" : ""}
         />
-        {showValidation.firstName && (
-          <span className="error-message">Le prénom est requis</span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.firstName && (
+            <span className="error-message">Le prénom est requis</span>
+          )}
+        </div>
       </div>
-      <div className="inputGroup">
+      <div id="inputLastName" className="inputGroup">
         <label htmlFor="inputLastName">Nom</label>
         <input
           type="text"
@@ -191,11 +136,13 @@ export default function CreateAccount() {
           onChange={handleChange}
           className={showValidation.lastName ? "error" : ""}
         />
-        {showValidation.lastName && (
-          <span className="error-message">Le nom est requis</span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.lastName && (
+            <span className="error-message">Le nom est requis</span>
+          )}
+        </div>
       </div>
-      <div className="inputGroup">
+      <div id="inputAge" className="inputGroup">
         <label htmlFor="inputAge">Âge</label>
         <input
           type="number"
@@ -206,11 +153,13 @@ export default function CreateAccount() {
           onChange={handleChange}
           className={showValidation.age ? "error" : ""}
         />
-        {showValidation.age && (
-          <span className="error-message">L'âge est requis</span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.age && (
+            <span className="error-message">L'âge est requis</span>
+          )}
+        </div>
       </div>
-      <div className="inputGroup">
+      <div id="inputFamilyGrade" className="inputGroup">
         <label htmlFor="inputFamilyGrade">Titre familiale</label>
         <select
           name="familyGrade"
@@ -232,13 +181,15 @@ export default function CreateAccount() {
           <option value="cousine">Cousine</option>
           <option value="membre">Membre</option>
         </select>
-        {showValidation.familyGrade && (
-          <span className="error-message">
-            Votre situation familiale est requise
-          </span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.familyGrade && (
+            <span className="error-message">
+              Votre situation familiale est requise
+            </span>
+          )}
+        </div>
       </div>
-      <div className="inputGroup">
+      <div id="inputMail" className="inputGroup">
         <label htmlFor="inputMail">E-mail</label>
         <input
           type="email"
@@ -249,11 +200,13 @@ export default function CreateAccount() {
           onChange={handleChange}
           className={showValidation.email ? "error" : ""}
         />
-        {showValidation.email && (
-          <span className="error-message">L'e-mail est requis</span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.email && (
+            <span className="error-message">L'e-mail est requis</span>
+          )}
+        </div>
       </div>
-      <div className="inputGroup">
+      <div id="inputPassword" className="inputGroup">
         <label htmlFor="inputPassword">Mot de passe</label>
         <input
           type="password"
@@ -264,11 +217,13 @@ export default function CreateAccount() {
           onChange={handleChange}
           className={showValidation.password ? "error" : ""}
         />
-        {showValidation.password && (
-          <span className="error-message">Le mot de passe est requis</span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.password && (
+            <span className="error-message">Le mot de passe est requis</span>
+          )}
+        </div>
       </div>
-      <div className="inputGroup">
+      <div id="inputConfirmPassword" className="inputGroup">
         <label htmlFor="inputConfirmPassword">Confirmer mot de passe</label>
         <input
           type="password"
@@ -279,30 +234,32 @@ export default function CreateAccount() {
           onChange={handleChange}
           className={showValidation.confirmPassword ? "error" : ""}
         />
-        {showValidation.confirmPassword && (
-          <span className="error-message">
-            La confirmation du mot de passe est requise
-          </span>
-        )}
+        <div className="input-error-message-container">
+          {showValidation.confirmPassword && (
+            <span className="error-message">
+              La confirmation du mot de passe est requise
+            </span>
+          )}
+        </div>
       </div>
-      <button
-        type="submit"
-        aria-label="button s'inscrire"
-      >
-        {" "}
-        Envoyer
-      </button>
-      {isValidForm &&
-      <p className="validation-message">
-        Inscription réussie - N'oubliez pas vos identifiants
-      </p>
-      }
+
+      <div id="submit-button-container">
+        <button
+          type="submit"
+          aria-label="button s'inscrire"
+          style={{ backgroundColor: isValidForm ? "green" : "red" }}
+        >
+          Envoyer
+        </button>
+      </div>
+      {isValidForm && (
+        <p className="validation-message">
+          Inscription réussie - N'oubliez pas vos identifiants
+        </p>
+      )}
       {invalidFormMessage && (
         <p className="error-message">{invalidFormMessage}</p>
       )}
     </form>
   );
 }
-
-
-// Revoir la prise en charge de l'état en temps réel !
