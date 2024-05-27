@@ -68,7 +68,7 @@ export default function CreateAccount() {
         );
         const data = await response.json();
         if (response.ok) {
-          alert("Compte créé avec succès !");
+          alert("Compte créé avec succès - Redirection dans 30 secondes");
           // Rediriger ou effectuer d'autres actions
           setTimeout(() => {
             navigate("/login");
