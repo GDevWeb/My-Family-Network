@@ -31,8 +31,9 @@ export default function FormLogin() {
         />
       </div>
       <button className="button-submit">Connexion</button>
-      <p id="create-account">Pas de compte ? <Link to={"/createAccount"}>Créer un compte</Link></p>
+      <p id="create-account">
+        Pas de compte ? <Link to={"/create-account"}>Créer un compte</Link>
+      </p>
     </form>
-    
   );
 }

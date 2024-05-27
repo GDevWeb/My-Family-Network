@@ -7,6 +7,8 @@ import PageError from "./Pages/PageError";
 import PageHome from "./Pages/PageHome";
 import PageAlbums from "./Pages/PageAlbums";
 import PageLogin from "./Pages/PageLogin";
+import PageCreateAccount from "./Pages/PageCreateAccount";
+import PageArticles from "./Pages/PageArticles";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +18,9 @@ const router = createBrowserRouter([
     children: [
       { path: "home", element: <PageHome /> },
       { path: "albums/*", element: <PageAlbums /> },
+      { path: "articles/*", element: <PageArticles /> },
       { path: "login", element: <PageLogin /> },
+      { path: "create-account", element: <PageCreateAccount /> },
     ],
   },
 ]);

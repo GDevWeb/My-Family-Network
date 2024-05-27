@@ -1,0 +1,36 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+form#formSignup {
+    @include section-container($flex-wrap: wrap);
+
+    h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    .inputGroup {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: $gap-default;
+        width: 100%;
+
+        label {
+            width: 100%;
+            text-align: center;
+            font-weight: bolder;
+        }
+
+        input,
+        select {
+            min-width: 100%;
+            padding: $padding-default;
+            border-radius: $default-border-radius;
+            text-align: center;
+        }
+    }
+
+}

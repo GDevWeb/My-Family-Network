@@ -6,7 +6,7 @@ const { imgPreviewAlbumChristmas } = indexImages;
 
 const albumListPictures_noel_2023 = [
   {
-    id: nanoid(8),
+    id: "1",
     picture: imgPreviewAlbumChristmas,
     title: "Un Joyeux noël #1",
     content: "Un joyeux noël en famille #1",
