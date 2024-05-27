@@ -6,6 +6,7 @@ form#formSignUp {
 
     h2#formTitle {
         grid-column: span 2;
+        grid-row: 1;
         width: 100%;
         text-align: center;
     }
@@ -33,16 +34,18 @@ form#formSignUp {
             border-radius: $default-border-radius;
             text-align: center;
         }
+
+        .input-error-message-container {
+            width: 100%;
+            text-align: center;
+            padding: $padding-default;
+        }
+
     }
 
     // position in grid : 
     #inputFirstName.inputGroup {
         grid-column: 1;
-        grid-row: 2;
-    }
-
-    #inputLastName.inputGroup {
-        grid-column: 2;
         grid-row: 2;
     }
 
@@ -66,6 +69,12 @@ form#formSignUp {
         grid-row: 4;
     }
 
+    #inputConfirmMail.inputGroup {
+        grid-column: 2;
+        grid-row: 4;
+    }
+
+
     #inputPassword.inputGroup {
         grid-column: 1;
         grid-row: 5;
@@ -76,11 +85,6 @@ form#formSignUp {
         grid-row: 5;
     }
 
-    .input-error-message-container{
-        width: 100%;
-        text-align: center;
-        padding: $padding-default;
-    }
 
     #submit-button-container {
         @include flex-center;
@@ -92,13 +96,13 @@ form#formSignUp {
     }
 
 
-    #validation-message-container{
+    #validation-message-container {
         grid-column: span 2;
         width: 100%;
         text-align: center;
     }
 
-    #invalidation-message-container{
+    #invalidation-message-container {
         grid-column: span 2;
         width: 100%;
         text-align: center;
