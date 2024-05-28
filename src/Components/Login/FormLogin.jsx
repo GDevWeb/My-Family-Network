@@ -17,6 +17,7 @@ export default function FormLogin() {
   const [isValidForm, setIsValidForm] = useState(false);
   const [invalidFormMessage, setInvalidFormMessage] = useState("");
 
+  // 2.Behavior:
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -27,7 +28,6 @@ export default function FormLogin() {
   };
 
   const navigate = useNavigate();
-  // 2.Behavior:
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +38,6 @@ export default function FormLogin() {
       try {
         const response = await fetch(
           "http://localhost:3000/my-family-network/api/auth/login",
-
           {
             method: "POST",
             headers: {
@@ -52,15 +51,20 @@ export default function FormLogin() {
         );
         const data = await response.json();
         if (response.ok) {
-          alert("Identification réussi");
-          console.log(data.message);
+          alert("Identification réussie");
+          localStorage.setItem("token", data.token);
+          // console.log(data.token);
           setTimeout(() => {
             navigate("/");
           }, 10000);
+        } else {
+          setInvalidFormMessage(
+            data.message || "Une erreur est survenue lors de la connexion"
+          );
         }
       } catch (error) {
-        console.error(error, "Pair prénom et mot de passe incorrect !");
-        setInvalidFormMessage("Pair prénom et mot de passe incorrect !");
+        console.error(error, "Erreur lors de la connexion");
+        setInvalidFormMessage("Erreur lors de la connexion");
       }
     }
   };
@@ -77,23 +81,23 @@ export default function FormLogin() {
     });
     setIsValidForm(Object.values(areValid).every((value) => value === true));
   };
-  // 3.Render :
+
   return (
     <form onSubmit={handleSubmit} id="formLogin">
       <div className="formGroup">
-        <label htmlFor="email">Prénom</label>
+        <label htmlFor="email">E-mail</label>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="votre prénom"
+          placeholder="Saisir votre e-mail"
           value={formData.email}
           onChange={handleChange}
           className={showValidation.email ? "error" : ""}
         />
         <div className="input-error-message-container">
           {showValidation.email && (
-            <span className="error-message">Le mail est requis</span>
+            <span className="error-message">L'e-mail est requis</span>
           )}
         </div>
       </div>
@@ -103,7 +107,7 @@ export default function FormLogin() {
           type="password"
           name="password"
           id="password"
-          placeholder="votre mot de passe"
+          placeholder="Saisir votre mot de passe"
           value={formData.password}
           onChange={handleChange}
           className={showValidation.password ? "error" : ""}
@@ -114,11 +118,17 @@ export default function FormLogin() {
           )}
         </div>
       </div>
-      <button className="button-submit">Connexion</button>
+      <button
+        className="button-submit"
+        aria-label="button connexion"
+        style={{ backgroundColor: isValidForm ? "green" : "red" }}
+      >
+        Connexion
+      </button>
       <div id="validation-message-container">
         {isValidForm && (
           <p className="validation-message">
-            Formulaire valide - Prêt à être envoyer
+            Formulaire valide - Prêt à être envoyé
           </p>
         )}
       </div>

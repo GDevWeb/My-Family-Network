@@ -75,6 +75,7 @@ export default function CreateAccount() {
           }, 30000);
         } else {
           setInvalidFormMessage(data.message || "Une erreur est survenue");
+          console.log(data.message);
         }
       } catch (error) {
         console.error("Erreur:", error);
