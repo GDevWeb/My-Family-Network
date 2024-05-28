@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Correct usage for React Router v6+
+import { useNavigate } from "react-router-dom"; 
 import "../../sass/FormSignup.scss";
 
 export default function CreateAccount() {
@@ -29,7 +29,7 @@ export default function CreateAccount() {
   const [isValidForm, setIsValidForm] = useState(false);
   const [invalidFormMessage, setInvalidFormMessage] = useState("");
 
-  const navigate = useNavigate(); // Correct usage of useNavigate
+  const navigate = useNavigate();
 
   // 2. Behavior:
   const handleChange = (e) => {

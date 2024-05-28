@@ -1,25 +1,101 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "../../sass/FormLogin.scss";
 
 export default function FormLogin() {
   // 1.State :
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  // 2.Behavior:
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [showValidation, setShowValidation] = useState({
+    email: false,
+    password: false,
+  });
+
+  const [isValidForm, setIsValidForm] = useState(false);
+  const [invalidFormMessage, setInvalidFormMessage] = useState("");
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+    validationCheck({ ...formData, [name]: value });
   };
 
+  const navigate = useNavigate();
+  // 2.Behavior:
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (isValidForm) {
+      console.log("Envoi du formulaire de connexion");
+
+      try {
+        const response = await fetch(
+          "http://localhost:3000/my-family-network/api/auth/login",
+
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: formData.email,
+              password: formData.password,
+            }),
+          }
+        );
+        const data = await response.json();
+        if (response.ok) {
+          alert("Identification réussi");
+          console.log(data.message);
+          setTimeout(() => {
+            navigate("/");
+          }, 10000);
+        }
+      } catch (error) {
+        console.error(error, "Pair prénom et mot de passe incorrect !");
+        setInvalidFormMessage("Pair prénom et mot de passe incorrect !");
+      }
+    }
+  };
+
+  const validationCheck = (data) => {
+    const areValid = {
+      email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(data.email),
+      password: data.password !== "",
+    };
+
+    setShowValidation({
+      email: !areValid.email,
+      password: !areValid.password,
+    });
+    setIsValidForm(Object.values(areValid).every((value) => value === true));
+  };
   // 3.Render :
   return (
     <form onSubmit={handleSubmit} id="formLogin">
       <div className="formGroup">
-        <label htmlFor="pseudo">Pseudo</label>
+        <label htmlFor="email">Prénom</label>
         <input
-          type="text"
-          name="pseudo"
-          id="pseudo"
-          placeholder="votre pseudo"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="votre prénom"
+          value={formData.email}
+          onChange={handleChange}
+          className={showValidation.email ? "error" : ""}
         />
+        <div className="input-error-message-container">
+          {showValidation.email && (
+            <span className="error-message">Le mail est requis</span>
+          )}
+        </div>
       </div>
       <div className="formGroup">
         <label htmlFor="password">Mot de Passe</label>
@@ -28,9 +104,29 @@ export default function FormLogin() {
           name="password"
           id="password"
           placeholder="votre mot de passe"
+          value={formData.password}
+          onChange={handleChange}
+          className={showValidation.password ? "error" : ""}
         />
+        <div className="input-error-message-container">
+          {showValidation.password && (
+            <span className="error-message">Le mot de passe est requis</span>
+          )}
+        </div>
       </div>
       <button className="button-submit">Connexion</button>
+      <div id="validation-message-container">
+        {isValidForm && (
+          <p className="validation-message">
+            Formulaire valide - Prêt à être envoyer
+          </p>
+        )}
+      </div>
+      <div id="invalidation-message-container">
+        {invalidFormMessage && (
+          <p className="error-message">{invalidFormMessage}</p>
+        )}
+      </div>
       <p id="create-account">
         Pas de compte ? <Link to={"/create-account"}>Créer un compte</Link>
       </p>
